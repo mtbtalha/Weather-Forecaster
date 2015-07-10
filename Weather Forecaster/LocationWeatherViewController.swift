@@ -15,10 +15,17 @@ class LocationWeatherViewController: UIViewController, GMSMapViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
    
     let cellIdentifier = "CellIdentifier"
+    let showWeatherSegueIdentifier = "ShowWeatherSegueIdentifier"
     var fetchedLocationCoordinates : CLLocationCoordinate2D?
     var location : String = ""
+    var VCType : Rows?
+    var tempConditions : Condition?
+    var locationText : Location?
+    var astronomy : Astronomy?
+    var wind : Wind?
+    var units : Units?
     
-    private enum Rows : Int {
+        enum Rows : Int {
         case Wind = 0
         case Weather
         case Astronomy
@@ -34,12 +41,14 @@ class LocationWeatherViewController: UIViewController, GMSMapViewDelegate, UITab
         var yql = YQL()
         let queryString = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"\(location)\")"
         var results = yql.query(queryString)
-        var recievedJSON = JSON(results!)
-//        if let queries: AnyObject = results[query] {
-//            println(queries)
-//        }
+        var recievedJSON = JSON (data: results!, error: nil)
+      
+        tempConditions = Condition(json: recievedJSON)
+        locationText = Location(json: recievedJSON)
+        astronomy = Astronomy(json: recievedJSON)
+        wind = Wind(json: recievedJSON)
+        units = Units(json: recievedJSON)
         
-//        println("\(results[query][count])")
         
     }
     
@@ -51,6 +60,18 @@ class LocationWeatherViewController: UIViewController, GMSMapViewDelegate, UITab
         self.mapUIView.addSubview(mapView)
         self.view.addSubview(mapUIView)
         mapView.delegate = self
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == showWeatherSegueIdentifier) {
+            let svc = segue.destinationViewController as! ShowWeatherViewController;
+            svc.type = VCType
+            svc.weatherCondition = tempConditions
+            svc.location = locationText
+            svc.astronomy = astronomy
+            svc.wind = wind
+            svc.units = units
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -77,9 +98,18 @@ class LocationWeatherViewController: UIViewController, GMSMapViewDelegate, UITab
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch (indexPath.row) {
-        case Rows.Wind.rawValue: println("Wind")
-        case Rows.Weather.rawValue: println("Weather")
-        case Rows.Astronomy.rawValue: println("Astronomy")
+        case Rows.Wind.rawValue:
+            println("Wind")
+            VCType = Rows.Wind
+            performSegueWithIdentifier(showWeatherSegueIdentifier, sender: self)
+        case Rows.Weather.rawValue:
+            println("Weather")
+            VCType = Rows.Weather
+            performSegueWithIdentifier(showWeatherSegueIdentifier, sender: self)
+        case Rows.Astronomy.rawValue:
+            println("Astronomy")
+            VCType = Rows.Astronomy
+            performSegueWithIdentifier(showWeatherSegueIdentifier, sender: self)
         default: println("L")
         }
     }

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Talha Babar. All rights reserved.
 //
 
+import SwiftyJSON
 
 class Location {
 
@@ -17,8 +18,8 @@ class Location {
         self.country = country
     }
     
-   /* init(dict: Dictionary) {
-        
+    init(json: JSON) {
+        self.city = json["query"]["results"]["channel"]["location"]["city"].string!
+        self.country = json["query"]["results"]["channel"]["location"]["country"].string!
     }
-*/
 }

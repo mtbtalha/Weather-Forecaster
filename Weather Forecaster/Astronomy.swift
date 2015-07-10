@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Talha Babar. All rights reserved.
 //
 
+import SwiftyJSON
 
 class Astronomy {
     
@@ -17,8 +18,9 @@ class Astronomy {
         self.sunSet = sunSet
     }
     
-   /* init(dict: Dictionary) {
-        
+    init(json: JSON) {
+        self.sunRise = json["query"]["results"]["channel"]["astronomy"]["sunrise"].string!
+        self.sunSet = json["query"]["results"]["channel"]["astronomy"]["sunset"].string!
     }
-*/
+
 }

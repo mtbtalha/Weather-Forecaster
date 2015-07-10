@@ -13,11 +13,11 @@ class ViewController: UIViewController {
  
     private let LoginSegueIdentifier = "SuccessfulLoginSegue"
 
-    @IBOutlet weak var loginButton: FBSDKLoginButton
+    @IBOutlet weak var loginButton: FBSDKButton?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.loginButton.readPermissions = ["public_profile","email"]
+   //     self.loginButton!.readPermissions = ["public_profile","email"]
         if FBSDKAccessToken.currentAccessToken() != nil {
             self.performSegueWithIdentifier(LoginSegueIdentifier, sender: self)
         }

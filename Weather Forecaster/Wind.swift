@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Talha Babar. All rights reserved.
 //
 
-
+import SwiftyJSON
 
 class Wind {
     
@@ -20,8 +20,11 @@ class Wind {
         self.speed = speed
     }
     
-  /*  init(dict: Dictionary) {
+    init(json: JSON) {
+        self.chill = json["query"]["results"]["channel"]["wind"]["chill"].string!
+        self.direction = json["query"]["results"]["channel"]["wind"]["direction"].string!
+        self.speed = json["query"]["results"]["channel"]["wind"]["speed"].string!
         
     }
-*/
+
 }

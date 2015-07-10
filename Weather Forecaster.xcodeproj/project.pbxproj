@@ -23,6 +23,7 @@
 		94C73FD91B4EB3BB0015528D /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C73FD81B4EB3BB0015528D /* Wind.swift */; };
 		94C73FDB1B4EB4430015528D /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C73FDA1B4EB4430015528D /* Units.swift */; };
 		94C73FDD1B4EB6AF0015528D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C73FDC1B4EB6AF0015528D /* Location.swift */; };
+		94DEF8D11B4FC739000C83D0 /* ShowWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DEF8D01B4FC739000C83D0 /* ShowWeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		94C73FD81B4EB3BB0015528D /* Wind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		94C73FDA1B4EB4430015528D /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		94C73FDC1B4EB6AF0015528D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		94DEF8D01B4FC739000C83D0 /* ShowWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				94C73FD81B4EB3BB0015528D /* Wind.swift */,
 				94C73FDA1B4EB4430015528D /* Units.swift */,
 				944CF4861B4BD86E00D2C7A8 /* Main.storyboard */,
+				94DEF8D01B4FC739000C83D0 /* ShowWeatherViewController.swift */,
 				944CF4891B4BD86E00D2C7A8 /* Images.xcassets */,
 				944CF48B1B4BD86E00D2C7A8 /* LaunchScreen.xib */,
 				944CF4801B4BD86E00D2C7A8 /* Supporting Files */,
@@ -338,6 +341,7 @@
 				94C73FCD1B4E5EA90015528D /* LocationWeatherViewController.swift in Sources */,
 				944CF4831B4BD86E00D2C7A8 /* AppDelegate.swift in Sources */,
 				94C73FD71B4EB3340015528D /* Astronomy.swift in Sources */,
+				94DEF8D11B4FC739000C83D0 /* ShowWeatherViewController.swift in Sources */,
 				94443B7F1B4D4A6D002A7B81 /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

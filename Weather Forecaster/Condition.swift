@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Talha Babar. All rights reserved.
 //
 
+import SwiftyJSON
 
 
 class Condition {
 
-    var date : String
-    var temperature : String
-    var weatherText : String
+    var date : String?
+    var temperature : String?
+    var weatherText : String?
     
     init(date: String, temperature: String, weatherText: String){
         self.date = date
@@ -20,9 +21,9 @@ class Condition {
         self.weatherText = weatherText
     }
     
-//    init(dict: Dictionary<String, AnyObject>) {
-//       self.date = dict["results"]["channel"]["item"]["condition"]["date"]!
-//       self.temperature = dict["results"]["channel"]["item"]["condition"]["temp"].string
-//       self.weatherText = dict["results"]["channel"]["item"]["condition"]["text"].string
-//    }
+    init(json: JSON) {
+        self.date = json["query"]["results"]["channel"]["item"]["condition"]["date"].string
+        self.temperature = json["query"]["results"]["channel"]["item"]["condition"]["temp"].string
+        self.weatherText = json["query"]["results"]["channel"]["item"]["condition"]["text"].string
+    }
 }
